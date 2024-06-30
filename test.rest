@@ -1,0 +1,37 @@
+POST http://localhost:3001/auth/register/
+Content-Type: application/json
+
+{
+    "name":"sreejith",
+    "email":"sreejitsdasdh@gmail.com",
+    "password":"12234"
+}
+
+
+###
+POST http://localhost:3001/auth/login
+Content-Type: application/json
+
+{
+    "email":"sreejith@gmail.com",
+    "password":"12234"
+}
+
+
+###
+
+POST http://localhost:3001/auth/reset-password
+Content-Type: application/json
+
+{
+    "email":"sreejith@gmail.com"
+}
+
+###
+POST http://localhost:3001/auth/otp
+Content-Type: application/json
+
+{
+    "email":"sreejith@gmail.com",
+    "otp":2155
+}
