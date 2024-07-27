@@ -1,7 +1,7 @@
 import {emailExist} from "../auth/emailExist.js";
 import bcrypt from "bcrypt";
 import {nanoid} from "nanoid";
-import {validateEmail} from "../lib/emailRegex.js";
+import {validateEmail} from "../utils/emailRegex.js";
 import {registerUser} from "../auth/register.js";
 
 export const createUser = async (req, res) => {

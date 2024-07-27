@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 import {nanoid} from "nanoid";
 import {emailExist} from "../auth/emailExist.js";
 import sql from "../config/mysql.js";
-import {log} from "../lib/log.js";
+import {log} from "../utils/log.js";
 dotenv.config();
 
 export const loginUser = async (req, res) => {
@@ -50,6 +50,7 @@ export const loginUser = async (req, res) => {
 
 			return res
 				.cookie("access_token", access_token, {maxAge: 1000 * 60 * 60 * 10})
+				.cookie("session_id", session_id, {maxAge: 1000 * 60 * 60 * 24 * 5})
 				.status(200)
 				.json({
 					message: "login success",

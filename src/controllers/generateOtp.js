@@ -2,6 +2,7 @@ import {emailExist} from "../auth/emailExist.js";
 import {otpSave} from "../auth/otp.js";
 import sql from "../config/mysql.js";
 import {sendToQueue} from "../config/rabbitMqConnect.js";
+import {OneTimePass} from "../utils/otp.js";
 
 export const generateOtp = async (req, res) => {
 	const {mail} = req.body;
@@ -12,7 +13,7 @@ export const generateOtp = async (req, res) => {
 		return res.status(400).json({message: "provide your email"});
 	}
 
-	const otp = Math.floor(Math.random(1000) * 9 * 1000);
+	const otp = OneTimePass();
 
 	//store otp in db with user id and email
 

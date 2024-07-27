@@ -5,5 +5,9 @@ export const logoutUser = async (req, res) => {
 
 	await sql(`DELETE FROM auth WHERE session_id = '${session_id}'`);
 
-	return res.status(200).json({message: "use logged out"});
+	return res
+		.clearCookie("access_token")
+		.clearCookie("session_id")
+		.status(200)
+		.json({message: "use logged out"});
 };

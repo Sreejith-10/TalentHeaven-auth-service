@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import {connection as sql} from "./config/mysql.js";
 import chalk from "chalk";
-import {log} from "./lib/log.js";
+import {log} from "./utils/log.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import router from "./route.js";

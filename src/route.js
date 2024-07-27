@@ -7,6 +7,7 @@ import {refreshToken} from "./controllers/refreshToken.js";
 import {generateOtp} from "./controllers/generateOtp.js";
 import {verifyOtp} from "./controllers/verifyOtp.js";
 import {resetPassword} from "./controllers/resetPassword.js";
+import {resentOtp} from "./controllers/resentOtp.js";
 
 const router = new express.Router();
 
@@ -17,6 +18,7 @@ router.get("/logout/:id", logoutUser);
 router.post("/login", loginUser);
 router.post("/forgot-password", generateOtp);
 router.post("/otp", verifyOtp);
+router.post("/resend-otp", resentOtp);
 router.post("/reset-password", resetPassword);
 
 export default router;
