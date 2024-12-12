@@ -8,6 +8,6 @@ RUN npm install
 
 COPY authentication-service/src ./src
 
-EXPOSE 3000
+EXPOSE 3001
 
 CMD [ "node","src/service.js" ]
