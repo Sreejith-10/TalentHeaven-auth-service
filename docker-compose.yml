@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  auth-service-db:
+    image: mysql:8.0
+    container_name: auth-service-db
+    ports:
+      - "3306:3306"
+    environment:
+        MYSQL_ROOT_PASSWORD: rootpassword
+        MYSQL_DATABASE: talent_heaven_auth
+        MYSQL_USER: user
+        MYSQL_PASSWORD: password
+    volumes:
+      - auth-service-db-data:/var/lib/mysql
+    networks:
+        - shared-network
+
+  auth-service:
+    build:
+      context: .
+    container_name: auth-service
+    ports:
+      - "3001:3001"
+    environment:
+      AMQP_URL: amqp://user:password@rabbitmq:5672
+      MYSQL_URL: mysql://user:password@auth-service-db:3306/talent_heaven_auth
+    depends_on:
+      - auth-service-db
+    networks:
+        - rabbitmq-network
+
+networks:
+  shared-network:
+    external: true
+
+volumes:
+  auth-service-db-data: 
